@@ -26,7 +26,7 @@ public class PlayerInventory : Inventory {
 
         int prev = currentSelection;
         if (change != 0)
-            currentSelection = (currentSelection - (change > 0f ? 1 : -1)) % items.Length;
+            currentSelection = (currentSelection - (change > 0f ? 1 : -1)) % 9;
 
         if (currentSelection < 0) currentSelection += 9;
 
