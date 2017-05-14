@@ -80,7 +80,7 @@ public abstract class Block
         Block upperBlock = GetUpperBlockPrototype(chunk, x, y, z);
         if (upperBlock == null) return false;
         // if (upperBlock is TransparentBlock) return false;
-        return upperBlock.IsSolid(upperBlock, Direction.down);
+        return upperBlock.IsSolid(this, Direction.down);
     }
 
     protected Block GetLowerBlockPrototype(Chunk chunk, int x, int y, int z)
@@ -101,7 +101,7 @@ public abstract class Block
         Block lowerBlock = GetLowerBlockPrototype(chunk, x, y, z);
         if(lowerBlock == null) return false;
         //if (lowerBlock is TransparentBlock) return false;
-        return lowerBlock.IsSolid(lowerBlock, Direction.up);
+        return lowerBlock.IsSolid(this, Direction.up);
     }
 
     protected Block GetNorthernBlockPrototype(Chunk chunk, int x, int y, int z)
@@ -122,7 +122,7 @@ public abstract class Block
         Block northernBlock = GetNorthernBlockPrototype(chunk, x, y, z);
         if (northernBlock == null) return false;
         // if (northernBlock is TransparentBlock) return false;
-        return northernBlock.IsSolid(northernBlock, Direction.south);
+        return northernBlock.IsSolid(this, Direction.south);
     }
 
     protected Block GetSouthernBlockPrototype(Chunk chunk, int x, int y, int z)
@@ -143,7 +143,7 @@ public abstract class Block
         Block southernBlock = GetSouthernBlockPrototype(chunk, x, y, z);
         if (southernBlock == null) return false;
         // if (southernBlock is TransparentBlock) return false;
-        return southernBlock.IsSolid(southernBlock, Direction.north);
+        return southernBlock.IsSolid(this, Direction.north);
     }
 
     protected Block GetEasternBlockPrototype(Chunk chunk, int x, int y, int z)
@@ -164,7 +164,7 @@ public abstract class Block
         Block easternBlock = GetEasternBlockPrototype(chunk, x, y, z);
         if (easternBlock == null) return false;
         // if (easternBlock is TransparentBlock) return false;
-        return easternBlock.IsSolid(easternBlock, Direction.west);
+        return easternBlock.IsSolid(this, Direction.west);
     }
 
     protected Block GetWesternBlockPrototype(Chunk chunk, int x, int y, int z)
@@ -185,7 +185,7 @@ public abstract class Block
         Block westernBlock = GetWesternBlockPrototype(chunk, x, y, z);
         if (westernBlock == null) return false;
         // if (westernBlock is TransparentBlock) return false;
-        return westernBlock.IsSolid(westernBlock, Direction.east);
+        return westernBlock.IsSolid(this, Direction.east);
     }
 
 
