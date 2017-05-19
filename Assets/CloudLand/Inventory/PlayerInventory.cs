@@ -93,27 +93,49 @@ public class PlayerInventory : Inventory {
     }
 
     private int blockShownInfo = 0;
+    private bool modelCreated = false;
 
     public void SetBlockShown(bool show, int id)
     {
         GameObject block = hand.FindChild("Block").gameObject;
+        if (!show)
+        {
+            block.SetActive(false);
+            Transform model = transform.FindChild("Model");
+            if (modelCreated)
+            {
+                DestroyImmediate(model.gameObject);
+                modelCreated = false;
+            }
+        }
         if (show && blockShownInfo != id)
         {
             blockShownInfo = id;
 
-            Transform model = transform.FindChild("Model");
             if (id < Block.prototypes.Length && Block.prototypes[id] != null)
             {
-                if (model != null) DestroyImmediate(model.gameObject);
+                // use cube
+                if (modelCreated)
+                {
+                    DestroyImmediate(transform.FindChild("Model").gameObject);
+                    modelCreated = false;
+                }
                 block.SetActive(true);
                 block.GetComponent<MeshRenderer>().material.mainTexture = Inventory.getItemTexture(id);
-            } else
+            }
+            else
             {
-                if (model != null) DestroyImmediate(model.gameObject);
+                // use item model
+                if (modelCreated)
+                {
+                    DestroyImmediate(transform.FindChild("Model").gameObject);
+                    // just preserve that modelCreated value, no need to change
+                }
                 GameObject prefab = (GameObject)Resources.Load("Entities/Items/" + id);
                 GameObject obj = GameObject.Instantiate(prefab, transform, false);
                 obj.transform.name = "Model";
                 block.SetActive(false);
+                modelCreated = true;
             }
         }
     }
