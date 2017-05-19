@@ -16,7 +16,8 @@ public abstract class Block
         /* 4 */ new BlockSand(),
         /* 5 */ new BlockWater(),
         /* 6 */ new BlockLog(),
-        /* 7 */ new BlockLeaves()
+        /* 7 */ new BlockLeaves(),
+        /* 8 */ new BlockPlank()
     };
 
     public static int[] meshBlocks = new int[]
@@ -37,6 +38,7 @@ public abstract class Block
     public static readonly Block WATER = prototypes[5];
     public static readonly Block LOG = prototypes[6];
     public static readonly Block LEAVES = prototypes[7];
+    public static readonly Block PLANK = prototypes[8];
 
     // Initialization
     protected abstract void InitTextures(TextureManager textureManager);

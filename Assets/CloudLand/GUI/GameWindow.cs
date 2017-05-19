@@ -73,8 +73,7 @@ public class GameWindow : MonoBehaviour {
         for(uint i = 0; i < element.Value.Entries.Count; i++)
         {
             int id = element.Value.Entries[i].MetaValue.Entries[0].Int32Value;
-            int meta = element.Value.Entries[i].MetaValue.Entries[1].Int32Value;
-            int count = element.Value.Entries[i].MetaValue.Entries[2].Int32Value;
+            int count = element.Value.Entries[i].MetaValue.Entries[1].Int32Value;
 
             Rect slot = new Rect(eleRect.x + 12 + (i % itemsPerLine) * 40, eleRect.y + line * 40f + 12, 32, 32);
             Rect slotCount = new Rect(eleRect.x + 12 + (i % itemsPerLine) * 40 + 16, eleRect.y + line * 40f + 28, 24, 8);

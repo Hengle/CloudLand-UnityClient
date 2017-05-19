@@ -100,10 +100,22 @@ public class PlayerInventory : Inventory {
         if (show && blockShownInfo != id)
         {
             blockShownInfo = id;
-            block.GetComponent<MeshRenderer>().material.mainTexture = Inventory.getItemTexture(id);
+
+            Transform model = transform.FindChild("Model");
+            if (id < Block.prototypes.Length && Block.prototypes[id] != null)
+            {
+                if (model != null) DestroyImmediate(model.gameObject);
+                block.SetActive(true);
+                block.GetComponent<MeshRenderer>().material.mainTexture = Inventory.getItemTexture(id);
+            } else
+            {
+                if (model != null) DestroyImmediate(model.gameObject);
+                GameObject prefab = (GameObject)Resources.Load("Entities/Items/" + id);
+                GameObject obj = GameObject.Instantiate(prefab, transform, false);
+                obj.transform.name = "Model";
+                block.SetActive(false);
+            }
         }
-        if (block.activeSelf == show) return;
-        block.SetActive(show);
     }
 
     public void SetArmShown(bool show)

@@ -56,12 +56,27 @@ public class ItemEntity : Entity {
             Debug.Log("GOT ITEM META -- not null");
             MapField<uint, SerializedMetadata.Types.MetadataEntry> item = ent.MetaValue.Entries;
             int item_id = item[0].Int32Value;
-            int item_meta = item[1].Int32Value;
-            // int item_count = item[2].Int32Value;
-            MeshRenderer renderer = GetComponentInChildren<MeshRenderer>();
-            Material mat = new Material(itemMaterial);
-            mat.mainTexture = Inventory.getItemTexture(item_id);
-            renderer.material = mat;
+            // int item_count = item[1].Int32Value;
+
+            Transform cube = transform.FindChild("Cube");
+            if (item_id < Block.prototypes.Length && Block.prototypes[item_id] != null)
+            {
+                MeshRenderer renderer = cube.GetComponent<MeshRenderer>();
+                Material mat = new Material(itemMaterial);
+                mat.mainTexture = Inventory.getItemTexture(item_id);
+                renderer.material = mat;
+                cube.gameObject.SetActive(true);
+            } else
+            {
+                cube.gameObject.SetActive(false);
+                Transform model = transform.FindChild("Model");
+                if(model != null)
+                {
+                    DestroyImmediate(model.gameObject);
+                    GameObject prefab = (GameObject)Resources.Load("Entities/Items/" + item_id);
+                    GameObject.Instantiate(prefab, transform, false);
+                }
+            }
         }
     }
 }
