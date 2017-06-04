@@ -100,7 +100,7 @@ public class ChunkManager : MonoBehaviour {
         int y = chunk.position.y;
         int z = chunk.position.z;
         // Create relations
-        Transform relationUp = chunkParent.FindChild(Chunk.Key(x, y + 1, z));
+        Transform relationUp = chunkParent.Find(Chunk.Key(x, y + 1, z));
         if (relationUp != null)
         {
             chunk.relations[4] = relationUp.gameObject.GetComponent<Chunk>();
@@ -108,35 +108,35 @@ public class ChunkManager : MonoBehaviour {
         }
 
 
-        Transform relationDown = chunkParent.FindChild(Chunk.Key(x, y - 1, z));
+        Transform relationDown = chunkParent.Find(Chunk.Key(x, y - 1, z));
         if (relationDown != null)
         {
             chunk.relations[5] = relationDown.gameObject.GetComponent<Chunk>();
             chunk.relations[5].relations[4] = chunk;
         }
 
-        Transform relationNorth = chunkParent.FindChild(Chunk.Key(x, y, z + 1));
+        Transform relationNorth = chunkParent.Find(Chunk.Key(x, y, z + 1));
         if (relationNorth != null)
         {
             chunk.relations[0] = relationNorth.gameObject.GetComponent<Chunk>();
             chunk.relations[0].relations[2] = chunk;
         }
 
-        Transform relationEast = chunkParent.FindChild(Chunk.Key(x + 1, y, z));
+        Transform relationEast = chunkParent.Find(Chunk.Key(x + 1, y, z));
         if (relationEast != null)
         {
             chunk.relations[1] = relationEast.gameObject.GetComponent<Chunk>();
             chunk.relations[1].relations[3] = chunk;
         }
 
-        Transform relationSouth = chunkParent.FindChild(Chunk.Key(x, y, z - 1));
+        Transform relationSouth = chunkParent.Find(Chunk.Key(x, y, z - 1));
         if (relationSouth != null)
         {
             chunk.relations[2] = relationSouth.gameObject.GetComponent<Chunk>();
             chunk.relations[2].relations[0] = chunk;
         }
 
-        Transform relationWest = chunkParent.FindChild(Chunk.Key(x - 1, y, z));
+        Transform relationWest = chunkParent.Find(Chunk.Key(x - 1, y, z));
         if (relationWest != null)
         {
             chunk.relations[3] = relationWest.gameObject.GetComponent<Chunk>();

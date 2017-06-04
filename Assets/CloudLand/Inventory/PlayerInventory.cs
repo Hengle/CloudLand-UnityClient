@@ -97,11 +97,11 @@ public class PlayerInventory : Inventory {
 
     public void SetBlockShown(bool show, int id)
     {
-        GameObject block = hand.FindChild("Block").gameObject;
+        GameObject block = hand.Find("Block").gameObject;
         if (!show)
         {
             block.SetActive(false);
-            Transform model = transform.FindChild("Model");
+            Transform model = transform.Find("Model");
             if (modelCreated)
             {
                 DestroyImmediate(model.gameObject);
@@ -117,7 +117,7 @@ public class PlayerInventory : Inventory {
                 // use cube
                 if (modelCreated)
                 {
-                    DestroyImmediate(transform.FindChild("Model").gameObject);
+                    DestroyImmediate(transform.Find("Model").gameObject);
                     modelCreated = false;
                 }
                 block.SetActive(true);
@@ -128,7 +128,7 @@ public class PlayerInventory : Inventory {
                 // use item model
                 if (modelCreated)
                 {
-                    DestroyImmediate(transform.FindChild("Model").gameObject);
+                    DestroyImmediate(transform.Find("Model").gameObject);
                     // just preserve that modelCreated value, no need to change
                 }
                 GameObject prefab = (GameObject)Resources.Load("Entities/Items/" + id);
@@ -142,7 +142,7 @@ public class PlayerInventory : Inventory {
 
     public void SetArmShown(bool show)
     {
-        GameObject arm = hand.transform.FindChild("Arm").gameObject;
+        GameObject arm = hand.transform.Find("Arm").gameObject;
         if (arm.activeSelf == show) return;
         arm.SetActive(show);
     }

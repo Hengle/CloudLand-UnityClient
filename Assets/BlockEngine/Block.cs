@@ -17,12 +17,13 @@ public abstract class Block
         /* 5 */ new BlockWater(),
         /* 6 */ new BlockLog(),
         /* 7 */ new BlockLeaves(),
-        /* 8 */ new BlockPlank()
+        /* 8 */ new BlockPlank(),
+        /* 9 */ new BlockTorch(),
     };
 
     public static int[] meshBlocks = new int[]
     {
-
+        9,       /* Torches */
     };
 
     public static bool isMeshBlock(int id)
@@ -39,6 +40,7 @@ public abstract class Block
     public static readonly Block LOG = prototypes[6];
     public static readonly Block LEAVES = prototypes[7];
     public static readonly Block PLANK = prototypes[8];
+    public static readonly Block TORCH = prototypes[9];
 
     // Initialization
     protected abstract void InitTextures(TextureManager textureManager);

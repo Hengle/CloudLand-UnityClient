@@ -23,7 +23,7 @@ namespace CloudLand.Networking.Handlers
                     if (entityTransform.GetComponent<HeadEntity>() != null)
                     {
                         entityTransform.rotation = Quaternion.Euler(0f, message.Yaw, 0f);
-                        entityTransform.FindChild("Head").rotation = Quaternion.Euler(message.Pitch, message.Yaw, 0f);
+                        entityTransform.Find("Head").rotation = Quaternion.Euler(message.Pitch, message.Yaw, 0f);
                     } else {
                         entityTransform.rotation = Quaternion.Euler(message.Pitch, message.Yaw, 0f);
                     }

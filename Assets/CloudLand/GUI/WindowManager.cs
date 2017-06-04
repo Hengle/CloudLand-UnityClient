@@ -60,7 +60,7 @@ public class WindowManager : MonoBehaviour {
     public GameWindow getWindowById(uint id)
     {
         string key = "Window-" + id;
-        Transform obj = transform.FindChild(key);
+        Transform obj = transform.Find(key);
         if (obj == null) return null;
         return obj.GetComponent<GameWindow>();
     }

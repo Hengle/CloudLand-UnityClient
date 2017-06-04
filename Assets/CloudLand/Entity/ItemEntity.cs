@@ -17,7 +17,7 @@ public class ItemEntity : Entity {
     {
         checkUpdateMeta();
 
-        transform.FindChild("Cube").Rotate(new Vector3(0f, Time.deltaTime * speed, 0f));
+        transform.Find("Cube").Rotate(new Vector3(0f, Time.deltaTime * speed, 0f));
 
         if(pickingUp)
         {
@@ -58,7 +58,7 @@ public class ItemEntity : Entity {
             int item_id = item[0].Int32Value;
             // int item_count = item[1].Int32Value;
 
-            Transform cube = transform.FindChild("Cube");
+            Transform cube = transform.Find("Cube");
             if (item_id < Block.prototypes.Length && Block.prototypes[item_id] != null)
             {
                 MeshRenderer renderer = cube.GetComponent<MeshRenderer>();
@@ -69,7 +69,7 @@ public class ItemEntity : Entity {
             } else
             {
                 cube.gameObject.SetActive(false);
-                Transform model = transform.FindChild("Model");
+                Transform model = transform.Find("Model");
                 if(model != null)
                 {
                     DestroyImmediate(model.gameObject);

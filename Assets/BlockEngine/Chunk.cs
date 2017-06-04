@@ -135,6 +135,7 @@ public class Chunk : MonoBehaviour
         lock (meshDataLock)
         {
             meshData = new MeshData();
+            blockMeshes.Clear();
             //if (rendered/* || (position.x * position.y * position.z) % 3 != 0*/)
             //{
             for (int x = 0; x < chunkSize; x++)
@@ -166,13 +167,11 @@ public class Chunk : MonoBehaviour
             meshData.uvArray = meshData.uv.ToArray();
             if (forceUpdate)
             {
-                blockMeshes.Clear();
                 forceUpdate = false;
                 Loom.QueueOnMainThread(() => RenderMesh());
             }
             else if (rendered)
             {
-                blockMeshes.Clear();
                 chunkManager.chunkQueue.QueueRender(this);
             }
         }
@@ -214,8 +213,10 @@ public class Chunk : MonoBehaviour
 
         foreach (int[] loc in blockMeshes)
         {
-            GameObject prefab = (GameObject) Resources.Load("MeshBlocks/" + loc[3] + "_" + loc[4]);
-            GameObject n = Instantiate(prefab, new Vector3(loc[0], loc[1], loc[2]), Quaternion.Euler(Vector3.zero), transform);
+            Debug.Log(string.Format("Created mesh block ID {3} at chunk local position {0},{1},{2}", loc[0], loc[1], loc[2], loc[3]));
+            GameObject prefab = (GameObject) Resources.Load("MeshBlocks/" + loc[3]);
+            GameObject n = Instantiate(prefab, transform);
+            n.transform.localPosition = new Vector3(loc[0], loc[1], loc[2]);
             n.transform.name = string.Format("MeshBlock|{0}|{1}|{2}", loc[0], loc[1], loc[2]);
         }
 
