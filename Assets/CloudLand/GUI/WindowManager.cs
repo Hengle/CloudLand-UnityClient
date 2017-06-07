@@ -30,12 +30,12 @@ public class WindowManager : MonoBehaviour {
             cursorItem = null;
         }
 
-        bool currentStatus = ClientComponent.INSTANCE.playerObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled;
+        bool currentStatus = ClientComponent.INSTANCE.playerObject.GetComponent<PlayerMovementController>().enabled;
         if(transform.childCount > 0)
         {
             if(currentStatus == true)
             {
-                ClientComponent.INSTANCE.playerObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+                ClientComponent.INSTANCE.playerObject.GetComponent<PlayerMovementController>().enabled = false;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
@@ -43,7 +43,7 @@ public class WindowManager : MonoBehaviour {
         {
             if(currentStatus == false)
             {
-                ClientComponent.INSTANCE.playerObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+                ClientComponent.INSTANCE.playerObject.GetComponent<PlayerMovementController>().enabled = true;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
