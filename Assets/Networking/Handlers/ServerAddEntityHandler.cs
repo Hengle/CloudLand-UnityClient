@@ -21,6 +21,7 @@ namespace CloudLand.Networking.Handlers
                 obj.GetComponent<Entity>().entityId = message.EntityId;
                 obj.GetComponent<Entity>().meta = message.Meta;
                 obj.transform.name = "entity|" + message.EntityId;
+                ClientComponent.INSTANCE.entityManager.registerCreated(obj.GetComponent<Entity>());
             });
         }
     }

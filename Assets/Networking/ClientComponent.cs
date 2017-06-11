@@ -12,6 +12,7 @@ public class ClientComponent : MonoBehaviour {
     public ChunkManager chunkManager;
 
     public Transform entitiesParent;
+    public EntityManager entityManager = new EntityManager();
 
     public Transform windowsParent;
 

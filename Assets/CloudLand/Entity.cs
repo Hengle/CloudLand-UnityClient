@@ -10,6 +10,9 @@ public abstract class Entity : MonoBehaviour {
 
     public bool updateMeta = true;
 
+    public Entity parent;
+    public int slotTaken = -1;
+
     protected void checkUpdateMeta()
     {
         if (updateMeta)
@@ -20,4 +23,8 @@ public abstract class Entity : MonoBehaviour {
     }
 
     protected abstract void ApplyMeta(Google.Protobuf.Collections.MapField<uint, SerializedMetadata.Types.MetadataEntry> meta);
+
+    protected abstract int GetSlotCount();
+
+    protected abstract Vector3 GetSlotRelativePosition(int slot);
 }

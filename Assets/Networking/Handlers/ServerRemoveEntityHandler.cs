@@ -15,7 +15,7 @@ namespace CloudLand.Networking.Handlers
                 Transform t = client.getClientComponent().entitiesParent.Find("entity|" + message.EntityId);
                 if(t != null)
                 {
-                    GameObject.Destroy(t.gameObject);
+                    ClientComponent.INSTANCE.entityManager.destroy(t.GetComponent<Entity>());
                 }
             });
         }

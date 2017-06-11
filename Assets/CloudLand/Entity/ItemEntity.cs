@@ -3,7 +3,8 @@ using Org.Dragonet.Cloudland.Net.Protocol;
 using Google.Protobuf.Collections;
 using UnityEngine;
 
-public class ItemEntity : Entity {
+public class ItemEntity : StandaloneEntity
+{
 
     public Material itemMaterial;
 

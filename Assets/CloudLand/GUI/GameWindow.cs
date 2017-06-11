@@ -85,7 +85,7 @@ public class GameWindow : MonoBehaviour {
 
             if (clicked)
             {
-                buttonPressed(index, (int)i, 0);
+                buttonPressed(index, (int)i, Event.current.button);
             }
 
             if( (i+1) % itemsPerLine == 0 )

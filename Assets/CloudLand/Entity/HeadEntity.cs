@@ -1,5 +1,5 @@
 ﻿
-public abstract class HeadEntity : Entity
+public abstract class HeadEntity : StandaloneEntity
 {
 }
 
