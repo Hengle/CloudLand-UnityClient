@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovementController : MonoBehaviour {
 
     public float speed = 1.2f;
@@ -13,7 +12,7 @@ public class PlayerMovementController : MonoBehaviour {
 
     void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rigidbody = transform.parent.GetComponent<Rigidbody>();
     }
 
     void OnGUI()
@@ -25,22 +24,22 @@ public class PlayerMovementController : MonoBehaviour {
 	void Update () {
         if (Input.GetKey(KeyCode.W))
         {
-            rigidbody.AddForce(detectAndReturn(transform.TransformDirection(Vector3.forward)) * 3.4f, ForceMode.VelocityChange);
+            rigidbody.AddForce(detectAndReturn(transform.parent.TransformDirection(Vector3.forward)) * 3.4f, ForceMode.VelocityChange);
             //rigidbody.position += transform.forward * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rigidbody.AddForce(detectAndReturn(transform.TransformDirection(Vector3.back)) * 3.4f, ForceMode.VelocityChange);
+            rigidbody.AddForce(detectAndReturn(transform.parent.TransformDirection(Vector3.back)) * 3.4f, ForceMode.VelocityChange);
             //rigidbody.position += transform.forward * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rigidbody.AddForce(detectAndReturn(transform.TransformDirection(Vector3.left)) * 3.4f, ForceMode.VelocityChange);
+            rigidbody.AddForce(detectAndReturn(transform.parent.TransformDirection(Vector3.left)) * 3.4f, ForceMode.VelocityChange);
             //rigidbody.position += transform.forward * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rigidbody.AddForce(detectAndReturn(transform.TransformDirection(Vector3.right)) * 3.4f, ForceMode.VelocityChange);
+            rigidbody.AddForce(detectAndReturn(transform.parent.TransformDirection(Vector3.right)) * 3.4f, ForceMode.VelocityChange);
             //rigidbody.position += transform.forward * Time.deltaTime;
         }
 
@@ -48,13 +47,13 @@ public class PlayerMovementController : MonoBehaviour {
 
         if(detectDirection(rigidbody.velocity))
         {
-            Ray r = new Ray(transform.position, rigidbody.velocity.normalized * 3f);
+            Ray r = new Ray(transform.parent.position, rigidbody.velocity.normalized * 3f);
             RaycastHit hit;
             if (Physics.Raycast(r, out hit))
             {
-                rigidbody.velocity -= hit.point - transform.position;
+                rigidbody.velocity -= hit.point - transform.parent.position;
 
-                if(Vector3.Distance(transform.position, hit.point) <= 1.7f)
+                if(Vector3.Distance(transform.parent.position, hit.point) <= 1.7f)
                 {
                     rigidbody.velocity = Vector3.zero;
                 }
@@ -67,11 +66,11 @@ public class PlayerMovementController : MonoBehaviour {
         if (detectDirection(dir))
         {
             Vector3 n = new Vector3(dir.x, dir.y, dir.z);
-            Ray r = new Ray(transform.position, rigidbody.velocity.normalized * 3f);
+            Ray r = new Ray(transform.parent.position, rigidbody.velocity.normalized * 3f);
             RaycastHit hit;
             if (Physics.Raycast(r, out hit))
             {
-                n -= hit.point - transform.position;
+                n -= hit.point - transform.parent.position;
             }
             return n;
         }
@@ -81,11 +80,12 @@ public class PlayerMovementController : MonoBehaviour {
     void LateUpdate()
     {
         rigidbody.velocity /= 1.4f;
+        if (rigidbody.velocity.magnitude < 0.2) rigidbody.velocity = Vector3.zero;
     }
 
     bool detectDirection(Vector3 direction)
     {
-        Vector3 pos = transform.position + (rigidbody.velocity.normalized);
+        Vector3 pos = transform.parent.position + (rigidbody.velocity.normalized);
         int bx = Mathf.RoundToInt(pos.x);
         int by = Mathf.RoundToInt(pos.y - 1);
         int bz = Mathf.RoundToInt(pos.z);
@@ -96,7 +96,7 @@ public class PlayerMovementController : MonoBehaviour {
 
         Ray r = new Ray(pos, direction.normalized);
         RaycastHit hit;
-        if (Physics.Raycast(r, out hit, 3f))
+        if (Physics.Raycast(r, out hit, 1.7f))
         {
             return true;
         }

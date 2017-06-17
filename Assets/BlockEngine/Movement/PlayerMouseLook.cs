@@ -70,7 +70,7 @@ public class PlayerMouseLook : MonoBehaviour
             Quaternion yQuaternion = Quaternion.AngleAxis(rotAverageY, Vector3.left);
             Quaternion xQuaternion = Quaternion.AngleAxis(rotAverageX, Vector3.up);
 
-            transform.localRotation = originalRotation * xQuaternion * yQuaternion;
+            SetRotation(originalRotation * xQuaternion * yQuaternion);
         }
         else if (axes == RotationAxes.MouseX)
         {
@@ -93,7 +93,7 @@ public class PlayerMouseLook : MonoBehaviour
             rotAverageX = ClampAngle(rotAverageX, minimumX, maximumX);
 
             Quaternion xQuaternion = Quaternion.AngleAxis(rotAverageX, Vector3.up);
-            transform.localRotation = originalRotation * xQuaternion;
+            SetRotation(originalRotation * xQuaternion);
         }
         else
         {
@@ -116,7 +116,7 @@ public class PlayerMouseLook : MonoBehaviour
             rotAverageY = ClampAngle(rotAverageY, minimumY, maximumY);
 
             Quaternion yQuaternion = Quaternion.AngleAxis(rotAverageY, Vector3.left);
-            transform.localRotation = originalRotation * yQuaternion;
+            SetRotation(originalRotation * yQuaternion);
         }
     }
 
@@ -125,7 +125,7 @@ public class PlayerMouseLook : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb)
             rb.freezeRotation = true;
-        originalRotation = transform.localRotation;
+        originalRotation = GetRotation();
     }
 
     public static float ClampAngle(float angle, float min, float max)
@@ -143,5 +143,31 @@ public class PlayerMouseLook : MonoBehaviour
             }
         }
         return Mathf.Clamp(angle, min, max);
+    }
+
+    Quaternion GetRotation()
+    {
+        Vector3 e = new Vector3();
+        e.x = transform.localEulerAngles.x;
+        e.y = transform.parent.localEulerAngles.y;
+        e.z = transform.localEulerAngles.z;
+
+        return Quaternion.Euler(e);
+    }
+
+    void SetRotation(Quaternion q)
+    {
+        Vector3 e = q.eulerAngles;
+
+        Vector3 eThis = new Vector3();
+        eThis.x = e.x;
+        eThis.y = transform.localEulerAngles.y;
+        eThis.z = e.z;
+        Vector3 eParent = new Vector3();
+        eParent.x = transform.parent.localEulerAngles.x;
+        eParent.y = e.y;
+        eParent.z = transform.parent.localEulerAngles.z;
+        transform.localEulerAngles = eThis;
+        transform.parent.localEulerAngles = eParent;
     }
 }
