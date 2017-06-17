@@ -43,10 +43,11 @@ public class ActionManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void LateUpdate () {
+        if (Camera.current == null) return;
 
         if (WindowManager.INSTANCE.transform.childCount > 0) return;
 
-        Ray r = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        Ray r = Camera.current.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit h;
         bool hit = Physics.Raycast(r, out h);
         if(!hit || Vector3.Distance(h.point, ClientComponent.INSTANCE.playerObject.transform.position) > 10f)
