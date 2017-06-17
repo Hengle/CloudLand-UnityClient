@@ -25,22 +25,22 @@ public class PlayerMovementController : MonoBehaviour {
 	void Update () {
         if (Input.GetKey(KeyCode.W))
         {
-            rigidbody.AddForce(transform.TransformDirection(Vector3.forward) * 3.4f, ForceMode.VelocityChange);
+            rigidbody.AddForce(detectAndReturn(transform.TransformDirection(Vector3.forward)) * 3.4f, ForceMode.VelocityChange);
             //rigidbody.position += transform.forward * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rigidbody.AddForce(transform.TransformDirection(Vector3.back) * 3.4f, ForceMode.VelocityChange);
+            rigidbody.AddForce(detectAndReturn(transform.TransformDirection(Vector3.back)) * 3.4f, ForceMode.VelocityChange);
             //rigidbody.position += transform.forward * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rigidbody.AddForce(transform.TransformDirection(Vector3.left) * 3.4f, ForceMode.VelocityChange);
+            rigidbody.AddForce(detectAndReturn(transform.TransformDirection(Vector3.left)) * 3.4f, ForceMode.VelocityChange);
             //rigidbody.position += transform.forward * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rigidbody.AddForce(transform.TransformDirection(Vector3.right) * 3.4f, ForceMode.VelocityChange);
+            rigidbody.AddForce(detectAndReturn(transform.TransformDirection(Vector3.right)) * 3.4f, ForceMode.VelocityChange);
             //rigidbody.position += transform.forward * Time.deltaTime;
         }
 
@@ -48,14 +48,35 @@ public class PlayerMovementController : MonoBehaviour {
 
         if(detectDirection(rigidbody.velocity))
         {
-            Ray r = new Ray(transform.position, rigidbody.velocity * 4f);
+            Ray r = new Ray(transform.position, rigidbody.velocity.normalized * 3f);
             RaycastHit hit;
             if (Physics.Raycast(r, out hit))
             {
                 rigidbody.velocity -= hit.point - transform.position;
+
+                if(Vector3.Distance(transform.position, hit.point) <= 1.7f)
+                {
+                    rigidbody.velocity = Vector3.zero;
+                }
             }
         }
 	}
+
+    Vector3 detectAndReturn(Vector3 dir)
+    {
+        if (detectDirection(dir))
+        {
+            Vector3 n = new Vector3(dir.x, dir.y, dir.z);
+            Ray r = new Ray(transform.position, rigidbody.velocity.normalized * 3f);
+            RaycastHit hit;
+            if (Physics.Raycast(r, out hit))
+            {
+                n -= hit.point - transform.position;
+            }
+            return n;
+        }
+        return dir;
+    }
 
     void LateUpdate()
     {
@@ -73,9 +94,9 @@ public class PlayerMovementController : MonoBehaviour {
             return true;
         }
 
-        Ray r = new Ray(pos, direction.normalized * 2f);
+        Ray r = new Ray(pos, direction.normalized);
         RaycastHit hit;
-        if (Physics.Raycast(r, out hit, 4f))
+        if (Physics.Raycast(r, out hit, 3f))
         {
             return true;
         }
