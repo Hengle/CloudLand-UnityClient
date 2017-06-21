@@ -80,6 +80,9 @@ public class ActionManager : MonoBehaviour {
             {
                 aimingEntity = new WeakReference(target, true);
             }
+
+            cancelBreaking();
+            return;
         } else
         {
             aimingEntity = null;
