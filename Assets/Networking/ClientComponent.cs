@@ -62,16 +62,16 @@ public class ClientComponent : MonoBehaviour {
             msg.X = savedPosition.x;
             msg.Y = savedPosition.y;
             msg.Z = savedPosition.z;
-            msg.Yaw = playerObject.transform.localRotation.eulerAngles.y;
-            msg.Pitch = playerObject.transform.localRotation.eulerAngles.x;
+            msg.Yaw = playerObject.transform.localEulerAngles.y;
+            msg.Pitch = playerObject.transform.Find("FirstPersonCharacter").rotation.eulerAngles.x;
             /*Debug.Log("Position and rotation in engine: " + string.Format("({0}, {1}, {2}) # {3}, {4}", savedPosition.x, savedPosition.y, savedPosition.z, playerObject.transform.rotation.y, playerObject.transform.rotation.x));
             Debug.Log("Updating position and rotation: " + string.Format("({0}, {1}, {2}) # {3}, {4}", msg.X, msg.Y, msg.Z, msg.Yaw, msg.Pitch));
             Debug.Log("========");*/
             client.sendMessage(msg);
 
             previousSent = savedPosition;
-            previousYaw = playerObject.transform.localEulerAngles.y;
-            previousPitch = playerObject.transform.localEulerAngles.x;
+            previousYaw = msg.Yaw;
+            previousPitch = msg.Pitch;
             updateTime = 0f;
         }
 	}

@@ -22,6 +22,8 @@ public class ActionManager : MonoBehaviour {
     private int breakingZ;
     private bool c;
 
+    private WeakReference aimingEntity;
+
     // Use this for initialization
     void Start () {
         client = GetComponent<ClientComponent>();
@@ -38,18 +40,51 @@ public class ActionManager : MonoBehaviour {
 
     void OnGUI()
     {
+        // crosshair
         GUI.Label(new Rect(Screen.width / 2 - (crossSize / 2), Screen.height / 2 - (crossSize / 2), crossSize, crossSize), "+");
+
+        // aiming entity
+        if (aimingEntity != null && aimingEntity.IsAlive)
+        {
+            Entity aiming = (Entity)aimingEntity.Target;
+            GUI.Label(new Rect(16f, Screen.height / 4, 200, 800), aiming.summaryString());
+        }
     }
 
 	// Update is called once per frame
 	void LateUpdate () {
-        if (Camera.current == null) return;
+        // if (Camera.current == null) return;
 
         if (WindowManager.INSTANCE.transform.childCount > 0) return;
 
-        Ray r = Camera.current.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        Ray r = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit h;
         bool hit = Physics.Raycast(r, out h);
+        if(hit && h.transform.GetComponent<Entity>() != null)
+        {
+            // hit an entity
+            Entity target = h.transform.GetComponent<Entity>();
+
+            if(Input.GetMouseButtonDown(0))
+            {
+                hitEntity(target, 0);
+            } else if(Input.GetMouseButtonDown(1))
+            {
+                hitEntity(target, 1);
+            } else if (Input.GetMouseButtonDown(2))
+            {
+                hitEntity(target, 2);
+            }
+
+            if(aimingEntity == null || !aimingEntity.IsAlive || target.entityId != ((Entity)aimingEntity.Target).entityId)
+            {
+                aimingEntity = new WeakReference(target, true);
+            }
+        } else
+        {
+            aimingEntity = null;
+        }
+
         if(!hit || Vector3.Distance(h.point, ClientComponent.INSTANCE.playerObject.transform.position) > 10f)
         {
             hideSelection();
@@ -224,5 +259,14 @@ public class ActionManager : MonoBehaviour {
         if (selection.transform.position.Equals(p)) return;
         selection.transform.position = p;
         // selection.SetActive(true);
+    }
+
+    private void hitEntity(Entity target, int mouseButton)
+    {
+        Debug.Log("Hit entity [" + target.GetType().Name + "] with mouse button #" + mouseButton);
+        ClientEntityInteractMessage interact = new ClientEntityInteractMessage();
+        interact.TargetEntityId = target.entityId;
+        interact.MouseButton = (uint)mouseButton;
+        ClientComponent.INSTANCE.GetClient().sendMessage(interact);
     }
 }

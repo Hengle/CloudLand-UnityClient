@@ -16,16 +16,16 @@ namespace CloudLand.Networking.Handlers
                 if (entityTransform == null) return;
                 if (message.FlagPosition)
                 {
-                    entityTransform.position = new Vector3((float)message.X, (float)message.Y, (float)message.Z);
+                    entityTransform.localPosition = new Vector3((float)message.X, (float)message.Y, (float)message.Z);
                 }
                 if (message.FlagRotation)
                 {
                     if (entityTransform.GetComponent<HeadEntity>() != null)
                     {
-                        entityTransform.rotation = Quaternion.Euler(0f, message.Yaw, 0f);
-                        entityTransform.Find("Head").rotation = Quaternion.Euler(message.Pitch, message.Yaw, 0f);
+                        entityTransform.localRotation = Quaternion.Euler(0f, message.Yaw, 0f);
+                        entityTransform.Find("Head").localRotation = Quaternion.Euler(message.Pitch, message.Yaw, 0f);
                     } else {
-                        entityTransform.rotation = Quaternion.Euler(message.Pitch, message.Yaw, 0f);
+                        entityTransform.localRotation = Quaternion.Euler(message.Pitch, message.Yaw, 0f);
                     }
                 }
                 if(message.FlagMeta)

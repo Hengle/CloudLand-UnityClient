@@ -27,4 +27,36 @@ public abstract class Entity : MonoBehaviour {
     protected abstract int GetSlotCount();
 
     protected abstract Vector3 GetSlotRelativePosition(int slot);
+
+    public void setParent(Entity entity)
+    {
+        if(parent == null)
+        {
+            parent = null;
+            if(slotTaken != -1)
+            {
+                slotTaken = -1;
+                // TODO: release the constraint to the 'seat'
+                // ...
+            }
+            transform.parent = ClientComponent.INSTANCE.entitiesParent; // reset to the entities root
+        } else
+        {
+            if(parent != null && slotTaken != -1)
+            {
+                parent = null;
+                // TODO: release the constraint to the 'seat'
+                // ...
+            }
+            transform.parent = entity.transform;
+        }
+    }
+
+    public string summaryString()
+    {
+        string b = "Entity #" + entityId + "\n";
+        b += "Type: " + GetType().Name + "\n";
+        b += "Meta count: " + meta.Entries.Count + "\n";
+        return b;
+    }
 }

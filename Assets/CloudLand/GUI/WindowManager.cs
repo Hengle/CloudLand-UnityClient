@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using Org.Dragonet.Cloudland.Net.Protocol;
 
+using UnityStandardAssets.Characters.FirstPerson;
+
 public class WindowManager : MonoBehaviour {
 
     private static WindowManager _INSTANCE;
@@ -30,12 +32,12 @@ public class WindowManager : MonoBehaviour {
             cursorItem = null;
         }
 
-        bool currentStatus = ClientComponent.INSTANCE.playerObject.GetComponent<PlayerMovementController>().enabled;
+        bool currentStatus = ClientComponent.INSTANCE.playerObject.GetComponent<FirstPersonController>().enabled;
         if(transform.childCount > 0)
         {
             if(currentStatus == true)
             {
-                ClientComponent.INSTANCE.playerObject.GetComponent<PlayerMovementController>().enabled = false;
+                ClientComponent.INSTANCE.playerObject.GetComponent<FirstPersonController>().enabled = false;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
@@ -43,7 +45,7 @@ public class WindowManager : MonoBehaviour {
         {
             if(currentStatus == false)
             {
-                ClientComponent.INSTANCE.playerObject.GetComponent<PlayerMovementController>().enabled = true;
+                ClientComponent.INSTANCE.playerObject.GetComponent<FirstPersonController>().enabled = true;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }

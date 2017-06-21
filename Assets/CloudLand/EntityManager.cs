@@ -13,13 +13,20 @@ public class EntityManager
             entities.Remove(e.entityId);
         }
         entities.Add(e.entityId, e);
+        Debug.Log("Entity #" + e.entityId + " registered! ");
     }
 
     public void destroy(Entity e)
     {
         entities.Remove(e.entityId);
-
         GameObject.DestroyImmediate(e.gameObject);
+
+        Debug.Log("Entity #" + e.entityId + " unregistered! ");
+    }
+
+    public bool hasEntity(ulong entityId)
+    {
+        return entities.ContainsKey(entityId);
     }
 
     public Entity getEntity(ulong entityId)
