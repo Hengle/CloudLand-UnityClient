@@ -43,7 +43,6 @@ namespace CloudLand
             register(0xBE000002, typeof(ServerEntityUpdateMessage), ServerEntityUpdateMessage.Parser, new ServerEntityUpdateHandler());
             register(0xBE000003, typeof(ServerRemoveEntityMessage), ServerRemoveEntityMessage.Parser, new ServerRemoveEntityHandler());
             register(0xBE0000FF, typeof(ServerClearEntitiesMessage), ServerClearEntitiesMessage.Parser);
-            register(0xBEA00000, typeof(ServerEntityHierarchicalControlMessage), ServerEntityBindingControlMessage.Parser);
             register(0xBEA00001, typeof(ServerEntityBindingControlMessage), ServerEntityBindingControlMessage.Parser);
 
             // Window

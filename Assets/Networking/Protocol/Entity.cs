@@ -37,19 +37,13 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
             "dGEYCSABKAgSRQoEbWV0YRgKIAEoCzI3Lm9yZy5kcmFnb25ldC5jbG91ZGxh",
             "bmQubmV0LnByb3RvY29sLlNlcmlhbGl6ZWRNZXRhZGF0YSItChlTZXJ2ZXJS",
             "ZW1vdmVFbnRpdHlNZXNzYWdlEhAKCGVudGl0eUlkGAEgASgEIhwKGlNlcnZl",
-            "ckNsZWFyRW50aXRpZXNNZXNzYWdlItYCCiZTZXJ2ZXJFbnRpdHlIaWVyYXJj",
-            "aGljYWxDb250cm9sTWVzc2FnZRIQCghlbnRpdHlJZBgBIAEoBBIWCg50YXJn",
-            "ZXRFbnRpdHlJZBgCIAEoBBJuCgZhY3Rpb24YAyABKA4yXi5vcmcuZHJhZ29u",
-            "ZXQuY2xvdWRsYW5kLm5ldC5wcm90b2NvbC5TZXJ2ZXJFbnRpdHlIaWVyYXJj",
-            "aGljYWxDb250cm9sTWVzc2FnZS5IaWVyYXJjaGljYWxBY3Rpb24SPwoIcG9z",
-            "aXRpb24YCiABKAsyLS5vcmcuZHJhZ29uZXQuY2xvdWRsYW5kLm5ldC5wcm90",
-            "b2NvbC5WZWN0b3IzRiJRChJIaWVyYXJjaGljYWxBY3Rpb24SCQoFRU5URVIQ",
-            "ABIYChRMRUFWSU5HX1RPX1BBU1NFTkdFUhABEhYKEkxFQVZJTkdfVE9fT1VU",
-            "U0lERRACIl0KIVNlcnZlckVudGl0eUJpbmRpbmdDb250cm9sTWVzc2FnZRIQ",
-            "CghlbnRpdHlJZBgBIAEoBBIWCg50YXJnZXRFbnRpdHlJZBgCIAEoBBIOCgZz",
-            "bG90SWQYAyABKAUiSgobQ2xpZW50RW50aXR5SW50ZXJhY3RNZXNzYWdlEhYK",
-            "DnRhcmdldEVudGl0eUlkGAEgASgEEhMKC21vdXNlQnV0dG9uGAIgASgHYgZw",
-            "cm90bzM="));
+            "ckNsZWFyRW50aXRpZXNNZXNzYWdlIqoBCiFTZXJ2ZXJFbnRpdHlCaW5kaW5n",
+            "Q29udHJvbE1lc3NhZ2USEAoIZW50aXR5SWQYASABKAQSFgoOdGFyZ2V0RW50",
+            "aXR5SWQYAiABKAQSDgoGc2xvdElkGAMgASgFEksKFHNsb3RSZWxhdGl2ZVBv",
+            "c2l0aW9uGAQgASgLMi0ub3JnLmRyYWdvbmV0LmNsb3VkbGFuZC5uZXQucHJv",
+            "dG9jb2wuVmVjdG9yM0YiSgobQ2xpZW50RW50aXR5SW50ZXJhY3RNZXNzYWdl",
+            "EhYKDnRhcmdldEVudGl0eUlkGAEgASgEEhMKC21vdXNlQnV0dG9uGAIgASgH",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Org.Dragonet.Cloudland.Net.Protocol.MetadataReflection.Descriptor, global::Org.Dragonet.Cloudland.Net.Protocol.DataTypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -57,8 +51,7 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityUpdateMessage), global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityUpdateMessage.Parser, new[]{ "EntityId", "FlagPosition", "X", "Y", "Z", "FlagRotation", "Yaw", "Pitch", "FlagMeta", "Meta" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Org.Dragonet.Cloudland.Net.Protocol.ServerRemoveEntityMessage), global::Org.Dragonet.Cloudland.Net.Protocol.ServerRemoveEntityMessage.Parser, new[]{ "EntityId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Org.Dragonet.Cloudland.Net.Protocol.ServerClearEntitiesMessage), global::Org.Dragonet.Cloudland.Net.Protocol.ServerClearEntitiesMessage.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityHierarchicalControlMessage), global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityHierarchicalControlMessage.Parser, new[]{ "EntityId", "TargetEntityId", "Action", "Position" }, null, new[]{ typeof(global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityHierarchicalControlMessage.Types.HierarchicalAction) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityBindingControlMessage), global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityBindingControlMessage.Parser, new[]{ "EntityId", "TargetEntityId", "SlotId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityBindingControlMessage), global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityBindingControlMessage.Parser, new[]{ "EntityId", "TargetEntityId", "SlotId", "SlotRelativePosition" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Org.Dragonet.Cloudland.Net.Protocol.ClientEntityInteractMessage), global::Org.Dragonet.Cloudland.Net.Protocol.ClientEntityInteractMessage.Parser, new[]{ "TargetEntityId", "MouseButton" }, null, null, null)
           }));
     }
@@ -1019,239 +1012,8 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
 
   /// <summary>
   ///
-  ///  Establish a parent-child relationship between two entities. 
-  ///  Once it's done, we will only use RELATIVE position do describe the
-  ///  child entity. For example, when someone enters a spaceship. 
-  /// </summary>
-  public sealed partial class ServerEntityHierarchicalControlMessage : pb::IMessage<ServerEntityHierarchicalControlMessage> {
-    private static readonly pb::MessageParser<ServerEntityHierarchicalControlMessage> _parser = new pb::MessageParser<ServerEntityHierarchicalControlMessage>(() => new ServerEntityHierarchicalControlMessage());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ServerEntityHierarchicalControlMessage> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Dragonet.Cloudland.Net.Protocol.EntityReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ServerEntityHierarchicalControlMessage() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ServerEntityHierarchicalControlMessage(ServerEntityHierarchicalControlMessage other) : this() {
-      entityId_ = other.entityId_;
-      targetEntityId_ = other.targetEntityId_;
-      action_ = other.action_;
-      Position = other.position_ != null ? other.Position.Clone() : null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ServerEntityHierarchicalControlMessage Clone() {
-      return new ServerEntityHierarchicalControlMessage(this);
-    }
-
-    /// <summary>Field number for the "entityId" field.</summary>
-    public const int EntityIdFieldNumber = 1;
-    private ulong entityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong EntityId {
-      get { return entityId_; }
-      set {
-        entityId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "targetEntityId" field.</summary>
-    public const int TargetEntityIdFieldNumber = 2;
-    private ulong targetEntityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong TargetEntityId {
-      get { return targetEntityId_; }
-      set {
-        targetEntityId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "action" field.</summary>
-    public const int ActionFieldNumber = 3;
-    private global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityHierarchicalControlMessage.Types.HierarchicalAction action_ = 0;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityHierarchicalControlMessage.Types.HierarchicalAction Action {
-      get { return action_; }
-      set {
-        action_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "position" field.</summary>
-    public const int PositionFieldNumber = 10;
-    private global::Org.Dragonet.Cloudland.Net.Protocol.Vector3F position_;
-    /// <summary>
-    ///  local position for entering or leaving to passenger, world position for leaving outside. 
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Org.Dragonet.Cloudland.Net.Protocol.Vector3F Position {
-      get { return position_; }
-      set {
-        position_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as ServerEntityHierarchicalControlMessage);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ServerEntityHierarchicalControlMessage other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (EntityId != other.EntityId) return false;
-      if (TargetEntityId != other.TargetEntityId) return false;
-      if (Action != other.Action) return false;
-      if (!object.Equals(Position, other.Position)) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (EntityId != 0UL) hash ^= EntityId.GetHashCode();
-      if (TargetEntityId != 0UL) hash ^= TargetEntityId.GetHashCode();
-      if (Action != 0) hash ^= Action.GetHashCode();
-      if (position_ != null) hash ^= Position.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (EntityId != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(EntityId);
-      }
-      if (TargetEntityId != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(TargetEntityId);
-      }
-      if (Action != 0) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) Action);
-      }
-      if (position_ != null) {
-        output.WriteRawTag(82);
-        output.WriteMessage(Position);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (EntityId != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(EntityId);
-      }
-      if (TargetEntityId != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(TargetEntityId);
-      }
-      if (Action != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Action);
-      }
-      if (position_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ServerEntityHierarchicalControlMessage other) {
-      if (other == null) {
-        return;
-      }
-      if (other.EntityId != 0UL) {
-        EntityId = other.EntityId;
-      }
-      if (other.TargetEntityId != 0UL) {
-        TargetEntityId = other.TargetEntityId;
-      }
-      if (other.Action != 0) {
-        Action = other.Action;
-      }
-      if (other.position_ != null) {
-        if (position_ == null) {
-          position_ = new global::Org.Dragonet.Cloudland.Net.Protocol.Vector3F();
-        }
-        Position.MergeFrom(other.Position);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            EntityId = input.ReadUInt64();
-            break;
-          }
-          case 16: {
-            TargetEntityId = input.ReadUInt64();
-            break;
-          }
-          case 24: {
-            action_ = (global::Org.Dragonet.Cloudland.Net.Protocol.ServerEntityHierarchicalControlMessage.Types.HierarchicalAction) input.ReadEnum();
-            break;
-          }
-          case 82: {
-            if (position_ == null) {
-              position_ = new global::Org.Dragonet.Cloudland.Net.Protocol.Vector3F();
-            }
-            input.ReadMessage(position_);
-            break;
-          }
-        }
-      }
-    }
-
-    #region Nested types
-    /// <summary>Container for nested types declared in the ServerEntityHierarchicalControlMessage message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      public enum HierarchicalAction {
-        [pbr::OriginalName("ENTER")] Enter = 0,
-        [pbr::OriginalName("LEAVING_TO_PASSENGER")] LeavingToPassenger = 1,
-        [pbr::OriginalName("LEAVING_TO_OUTSIDE")] LeavingToOutside = 2,
-      }
-
-    }
-    #endregion
-
-  }
-
-  /// <summary>
-  ///
   ///  Used to control the binding between two entities. 
-  ///  It uses slots, if a player is alredy in another entity,
-  ///  i will firstly break the relationship and then transform
-  ///  the state from being a passenger to a slot user. 
+  ///  It uses slots, like seats in vehicles. 
   ///  For example, you can enter a spaceship(entering) and then
   ///  sit on the chair(taking a slot). 
   /// </summary>
@@ -1262,7 +1024,7 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Dragonet.Cloudland.Net.Protocol.EntityReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Org.Dragonet.Cloudland.Net.Protocol.EntityReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1282,6 +1044,7 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
       entityId_ = other.entityId_;
       targetEntityId_ = other.targetEntityId_;
       slotId_ = other.slotId_;
+      SlotRelativePosition = other.slotRelativePosition_ != null ? other.SlotRelativePosition.Clone() : null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1314,11 +1077,25 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
     /// <summary>Field number for the "slotId" field.</summary>
     public const int SlotIdFieldNumber = 3;
     private int slotId_;
+    /// <summary>
+    ///  set to 0xFFFFFFFF to to leave the 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int SlotId {
       get { return slotId_; }
       set {
         slotId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "slotRelativePosition" field.</summary>
+    public const int SlotRelativePositionFieldNumber = 4;
+    private global::Org.Dragonet.Cloudland.Net.Protocol.Vector3F slotRelativePosition_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Org.Dragonet.Cloudland.Net.Protocol.Vector3F SlotRelativePosition {
+      get { return slotRelativePosition_; }
+      set {
+        slotRelativePosition_ = value;
       }
     }
 
@@ -1338,6 +1115,7 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
       if (EntityId != other.EntityId) return false;
       if (TargetEntityId != other.TargetEntityId) return false;
       if (SlotId != other.SlotId) return false;
+      if (!object.Equals(SlotRelativePosition, other.SlotRelativePosition)) return false;
       return true;
     }
 
@@ -1347,6 +1125,7 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
       if (EntityId != 0UL) hash ^= EntityId.GetHashCode();
       if (TargetEntityId != 0UL) hash ^= TargetEntityId.GetHashCode();
       if (SlotId != 0) hash ^= SlotId.GetHashCode();
+      if (slotRelativePosition_ != null) hash ^= SlotRelativePosition.GetHashCode();
       return hash;
     }
 
@@ -1369,6 +1148,10 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
         output.WriteRawTag(24);
         output.WriteInt32(SlotId);
       }
+      if (slotRelativePosition_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(SlotRelativePosition);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1382,6 +1165,9 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
       }
       if (SlotId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(SlotId);
+      }
+      if (slotRelativePosition_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SlotRelativePosition);
       }
       return size;
     }
@@ -1399,6 +1185,12 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
       }
       if (other.SlotId != 0) {
         SlotId = other.SlotId;
+      }
+      if (other.slotRelativePosition_ != null) {
+        if (slotRelativePosition_ == null) {
+          slotRelativePosition_ = new global::Org.Dragonet.Cloudland.Net.Protocol.Vector3F();
+        }
+        SlotRelativePosition.MergeFrom(other.SlotRelativePosition);
       }
     }
 
@@ -1422,6 +1214,13 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
             SlotId = input.ReadInt32();
             break;
           }
+          case 34: {
+            if (slotRelativePosition_ == null) {
+              slotRelativePosition_ = new global::Org.Dragonet.Cloudland.Net.Protocol.Vector3F();
+            }
+            input.ReadMessage(slotRelativePosition_);
+            break;
+          }
         }
       }
     }
@@ -1435,7 +1234,7 @@ namespace Org.Dragonet.Cloudland.Net.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Org.Dragonet.Cloudland.Net.Protocol.EntityReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Org.Dragonet.Cloudland.Net.Protocol.EntityReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
