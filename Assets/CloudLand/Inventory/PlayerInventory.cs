@@ -43,14 +43,8 @@ public class PlayerInventory : Inventory {
             SetBlockShown(false, 0);
         } else
         {
-            if (items[currentSelection].Id < Block.prototypes.Length)
-            {
-                SetBlockShown(true, items[currentSelection].Id);
-                SetArmShown(false);
-            } else
-            {
-                SetArmShown(true);
-            }
+            SetArmShown(false);
+            SetBlockShown(true, items[currentSelection].Id);
         }
     }
 
@@ -93,32 +87,32 @@ public class PlayerInventory : Inventory {
     }
 
     private int blockShownInfo = 0;
-    private bool modelCreated = false;
 
     public void SetBlockShown(bool show, int id)
     {
         GameObject block = hand.Find("Block").gameObject;
         if (!show)
         {
+            blockShownInfo = -1; // reset the poop 
+
             block.SetActive(false);
-            Transform model = transform.Find("Model");
-            if (modelCreated)
+            Transform model = hand.Find("Model");
+            if (model != null)
             {
                 DestroyImmediate(model.gameObject);
-                modelCreated = false;
             }
+            return;
         }
         if (show && blockShownInfo != id)
         {
             blockShownInfo = id;
 
-            if (id < Block.prototypes.Length && Block.prototypes[id] != null)
+            if (id < Block.prototypes.Length && Block.prototypes[id] != null && !Block.isMeshBlock(id))
             {
                 // use cube
-                if (modelCreated)
+                if (modelCreated())
                 {
-                    DestroyImmediate(transform.Find("Model").gameObject);
-                    modelCreated = false;
+                    DestroyImmediate(hand.Find("Model").gameObject);
                 }
                 block.SetActive(true);
                 block.GetComponent<MeshRenderer>().material.mainTexture = Inventory.getItemTexture(id);
@@ -126,18 +120,24 @@ public class PlayerInventory : Inventory {
             else
             {
                 // use item model
-                if (modelCreated)
+                if (modelCreated())
                 {
-                    DestroyImmediate(transform.Find("Model").gameObject);
+                    DestroyImmediate(hand.Find("Model").gameObject);
                     // just preserve that modelCreated value, no need to change
                 }
                 GameObject prefab = (GameObject)Resources.Load("Entities/Items/" + id);
-                GameObject obj = GameObject.Instantiate(prefab, transform, false);
+                GameObject obj = GameObject.Instantiate(prefab, hand);
+                obj.transform.localPosition = new Vector3(0f, 0.1f, 0.2f);
                 obj.transform.name = "Model";
                 block.SetActive(false);
-                modelCreated = true;
             }
+            return;
         }
+    }
+
+    private bool modelCreated()
+    {
+        return hand.Find("Model") != null;
     }
 
     public void SetArmShown(bool show)
