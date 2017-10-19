@@ -34,6 +34,7 @@ public class ClientComponent : MonoBehaviour {
         obj.AddComponent(typeof(Loom));
 
         Block.InitializePrototypes();
+        Items.InitializeBuiltInItems();
 
         client = new CloudLandClient(this);
         client.connect(LoginScreen.addr, 21098);

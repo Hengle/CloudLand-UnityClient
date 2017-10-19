@@ -21,7 +21,7 @@ namespace BlockEngine.Blocks
 
         public override long GetBreakTime(int toolId)
         {
-            return 1200L;
+            return 1500L;
         }
 
         protected override void InitTextures(TextureManager textureManager)

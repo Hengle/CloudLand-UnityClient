@@ -19,6 +19,14 @@ namespace BlockEngine.Blocks
 
         public override long GetBreakTime(int toolId)
         {
+            string name = CloudLand.Items.toName(toolId);
+            if (name != null && name.EndsWith("_axe"))
+            {
+                if(name.Equals("cloudland:wood_axe"))
+                {
+                    return 1000L;
+                }
+            }
             return 2000L;
         }
 
