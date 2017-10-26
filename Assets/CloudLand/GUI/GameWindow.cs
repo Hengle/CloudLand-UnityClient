@@ -118,6 +118,7 @@ public class GameWindow : MonoBehaviour {
             ClientComponent.INSTANCE.GetClient().sendMessage(msgClose);
         }
         GameObject.Destroy(gameObject);
+        WindowManager.INSTANCE.busyTick = true;
     }
 
     public void updateElement(int index, Org.Dragonet.Cloudland.Net.Protocol.GUIElement element)

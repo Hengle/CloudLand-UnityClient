@@ -9,6 +9,9 @@ public class WindowManager : MonoBehaviour {
 
     public SerializedItem cursorItem;  // Item on cursor
 
+    // is this a busy tick? like just closed a window? if yes, ignore other actions (like block placing). 
+    public bool busyTick;
+
     public static WindowManager INSTANCE
     {
         get

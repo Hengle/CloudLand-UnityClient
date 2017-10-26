@@ -14,7 +14,7 @@ namespace BlockEngine.Blocks
 
         public override long GetBreakTime(int toolId)
         {
-            return 200L;
+            return 600L;
         }
 
         public override bool IsBlockAnimated()

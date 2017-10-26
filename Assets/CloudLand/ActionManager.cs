@@ -56,6 +56,11 @@ public class ActionManager : MonoBehaviour {
         // if (Camera.current == null) return;
 
         if (WindowManager.INSTANCE.transform.childCount > 0) return;
+        if (WindowManager.INSTANCE.busyTick)
+        {
+            WindowManager.INSTANCE.busyTick = false;
+            return;
+        }
 
         Ray r = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit h;

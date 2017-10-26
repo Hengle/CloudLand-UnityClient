@@ -19,6 +19,7 @@ public abstract class Block
         /* 7 */ new BlockLeaves(),
         /* 8 */ new BlockPlank(),
         /* 9 */ new BlockTorch(),
+        /* 10 */ new BlockCraftingTable()
     };
 
     public static int[] meshBlocks = new int[]

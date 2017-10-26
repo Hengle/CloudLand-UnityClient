@@ -18,6 +18,11 @@ namespace BlockEngine.Blocks
             return false;
         }
 
+        public override long GetBreakTime(int toolId)
+        {
+            return 600L;
+        }
+
         protected override void InitTextures(TextureManager textureManager)
         {
             tex = textureManager.RegisterTexture("dirt");
