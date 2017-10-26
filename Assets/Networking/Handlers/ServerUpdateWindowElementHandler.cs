@@ -10,18 +10,20 @@ namespace CloudLand.Networking.Handlers
         {
             ServerUpdateWindowElementMessage msg = (ServerUpdateWindowElementMessage)messageReceived;
 
-            if(msg.WindowId == 0)
+            Loom.QueueOnMainThread(() =>
             {
-                // TODO: handle inventory
-                Loom.QueueOnMainThread(() => {
-                    ClientComponent.INSTANCE.GetComponent<PlayerInventory>().updateFromMetadata(msg.ElementIndex, msg.NewElement.Value);
-                });
-                return;
-            }
+                if (msg.WindowId == 0)
+                {
+                    // TODO: handle inventory
 
-            GameWindow window = WindowManager.INSTANCE.getWindowById(msg.WindowId);
-            if (window == null) return;
-            Loom.QueueOnMainThread(() => window.updateElement(msg.ElementIndex, msg.NewElement));
+                    ClientComponent.INSTANCE.GetComponent<PlayerInventory>().updateFromMetadata(msg.ElementIndex, msg.NewElement.Value);
+                    return;
+                }
+
+                GameWindow window = WindowManager.INSTANCE.getWindowById(msg.WindowId);
+                if (window == null) return;
+                Loom.QueueOnMainThread(() => window.updateElement(msg.ElementIndex, msg.NewElement));
+            });
         }
     }
 }

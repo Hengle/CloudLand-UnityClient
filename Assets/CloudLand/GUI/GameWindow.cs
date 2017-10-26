@@ -97,7 +97,7 @@ public class GameWindow : MonoBehaviour {
 
     private void buttonPressed(int index, int param1, int param2)
     {
-        Debug.Log("BUTTON PRESSED " + string.Format("{0} : {1}, {2}", index, param1, param2));
+        Debug.Log("BUTTON PRESSED " + string.Format("WINDOW {0} : {1} : {2}, {3}", windowId, index, param1, param2));
         ClientWindowInteractMessage interact = new ClientWindowInteractMessage();
         interact.WindowId = windowId;
         interact.ElementIndex = index;

@@ -72,6 +72,12 @@ public class WindowManager : MonoBehaviour {
 
     public void createWindow(ServerWindowOpenMessage msg)
     {
+        if(getWindowById(msg.WindowId) != null)
+        {
+            getWindowById(msg.WindowId).Initialize(msg);
+            return;
+        }
+        Debug.Log("Creating window ID <" + msg.WindowId + ">! ");
         GameObject obj = GameObject.Instantiate(windowPrefab);
         obj.transform.name = "Window-" + msg.WindowId;
         obj.transform.parent = transform;
