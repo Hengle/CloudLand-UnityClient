@@ -111,7 +111,7 @@ public class GameWindow : MonoBehaviour {
 
     public void close(bool fromClient)
     {
-        if(!fromClient && windowId != 0)
+        if(fromClient && windowId != 0)
         {
             ClientWindowCloseMessage msgClose = new ClientWindowCloseMessage();
             msgClose.WindowId = windowId;
